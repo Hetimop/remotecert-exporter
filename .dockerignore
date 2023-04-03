@@ -1,5 +1,7 @@
 .dockerignore
 docker-compose.yml
+swarm-remotecert-exporter.yml
 Dockerfile
-Remote Cert exporter-1680466359807.json
-remote-cert-exporter-dashboard.JPG
+remotecert-exporter-dashboard.json
+README
+requirements_deb

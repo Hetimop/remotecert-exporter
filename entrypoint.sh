@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+useradd --shell /bin/false pwn 
+
 if [ -n "$URLS" ]; then
   sed -i "s/^URLS=.*$/URLS=($URLS)/" /app/metrics.sh
 fi
