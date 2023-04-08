@@ -1,14 +1,17 @@
 #!/bin/sh
 set -e
 
+# Créer l'utilisateur pwn
 useradd --shell /bin/false pwn 
 
-if [ -n "$URLS" ]; then
-  sed -i "s/^URLS=.*$/URLS=($URLS)/" /app/metrics.sh
-fi
 
-if [ -n "$METRICS_PORT" ]; then
-  sed -i "s/port = .*$/port = ${METRICS_PORT}/" /etc/xinetd.d/pwn
-fi
+# Démarrer le service xinetd
+echo "Starting xinetd service..."
+/usr/sbin/xinetd -dontfork &
 
-exec /usr/sbin/xinetd -dontfork
+# Lancer le script url_cert_exporter.sh toutes les 10 minutes
+while true; do
+  /app/scripts/url_cert_exporter.sh & /app/scripts/curl_cert_exporter.sh &
+  sleep 120
+
+done

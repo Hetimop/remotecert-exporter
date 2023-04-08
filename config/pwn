@@ -1,11 +1,11 @@
 service exporter
 {
   type = unlisted
-  port = 9999
+  port = 9007
   socket_type = stream
   wait = no
   user = root
-  server = /app/wrapper_metrics
+  server = /app/scripts/wrapper_metrics.sh
   disable = no
   only_from = 0.0.0.0/0
   log_type = FILE /dev/null

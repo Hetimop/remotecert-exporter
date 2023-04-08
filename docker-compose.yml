@@ -7,7 +7,6 @@ services:
     restart_policy:
       condition: any
     environment:
-      - URLS="youtube.com:443" "twitter.com:443" # Liste des domaines à vérifier
       - METRICS_PORT=9007  # Remplacement du port d'écooute (par défaut 9999)
     ports:
       - "9007:9007" 
